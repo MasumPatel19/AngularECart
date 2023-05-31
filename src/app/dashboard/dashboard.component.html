@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-6">
+    <div class="container">
+        <!-- <a href="#" class="navbar-brand">Hello</a> -->
+        <p>Welcome, {{uname | titlecase}}..!!</p>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-secondary position-relative mt-2" (click)="cart()">
+                        <i class="bi bi-cart-check-fill"></i>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-light text-black">
+                            {{cnt}}
+                        </span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container mt-2">
+    <div class="row">
+        <div class="search-data">
+            <input type="text" class="form-control" name="search" [(ngModel)]="searchText" autocomplete="off"
+                placeholder="Search item">
+        </div>
+    </div>
+</div>
+
+<section class="m-3 text-end">
+    <div>
+        <button class="btn btn-dark" (click)="addProduct()">Add Product</button>
+    </div>
+</section>
+
+<section>
+    <!-- <div class="container"> -->
+    <div class="row m-4 cbox g-5">
+        <div class="col align-items-center justify-content-center" *ngFor="let product of products | filter:searchText">
+            <div class="card shadow p-1 bg-body-tertiary rounded" style="width: 18rem;">
+                <img src="data:image/jpg;base64,{{product.productimage}}" alt="" style="width: auto; height: 40%;">
+
+                <div class="card-body">
+                    <h5 class="card-title"> {{product.productname}}</h5>
+                    <p class="card-text"><strong>&#8377; {{product.productprice}}</strong></p>
+                    <p class="card-text">{{product.productdescription}}</p>
+                </div>
+                <div class="text-center mb-2">
+                    <a (click)="addToCart(product)" class="btn btn-dark btn-sm">Add to cart</a>
+                </div>
+                <div class="text-center mb-2">
+                    <!-- <a class="btn btn-dark btn-sm " (click)="updateProduct(product)">Update Product</a> -->
+                    <a class="btn btn-dark btn-sm " routerLink="/editproduct/{{product.id}}">Update Product</a>
+                    &nbsp;
+                    <a (click)="deleteProduct(product.id)" class="btn btn-dark btn-sm">Delete Product</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</section>
+
+<footer class="p-4 text-white text-center position-relative bg-dark">
+    <div class="container">
+        <p class="lead">Copyright &copy; 2023</p>
+    </div>
+</footer>

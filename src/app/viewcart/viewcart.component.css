@@ -1,0 +1,37 @@
+* {
+    text-align: center;
+}
+.container {
+    /* height: 80vh; */
+    margin: auto;
+    padding: 20px;
+    border: 1px solid;
+}
+
+.center {
+    top: 40%;
+    left: 50%;
+    transform: translate(-45%, -45%);
+    position: absolute;
+}
+
+.center img {
+    color: inherit;
+    border: none;
+    outline: none;
+    width: 360px;
+    height: 275px;
+    text-decoration: none;
+    /* margin: 20px 0px; */
+}
+
+.card table {
+    display: flex;
+    min-width: none;
+    position: relative;
+    word-wrap: break-word;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: .25rem;
+    flex-direction: column;
+}

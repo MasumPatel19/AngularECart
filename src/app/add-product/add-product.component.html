@@ -1,0 +1,64 @@
+<div>
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <form id="login-form" class="form" action="" method="post" [formGroup]="productForm">
+                        <h3 class="text-center">Add Product</h3>
+                        <div class="form-group">
+                            <label for="productname">Product Name:</label><br>
+                            <input type="text" name="productname" id="productname" class="form-control"
+                                formControlName="productname">
+                            <!-- <div *ngIf="submitted  && !productForm.controls['productname'].value">
+                                    <div class="input-error">
+                                     Product Name  is required
+                                    </div>
+                                  </div> -->
+
+                            <div *ngIf="(productForm.controls['productname']?.touched &&  productForm.controls['productname']?.invalid) || (submitted  && !productForm.controls['productname'].value)"
+                                class=" input-error">
+                                Product Name is required.
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="productprice">Product Price:</label><br>
+                            <input type="number" name="productprice" id="productprice" class="form-control"
+                                formControlName="productprice" min="0">
+                            <div *ngIf="(productForm.controls['productprice']?.touched &&  productForm.controls['productprice']?.invalid) || (submitted  && !productForm.controls['productprice'].value)"
+                                class=" input-error">
+                                Product Price is required.
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="productdescription">Product Description:</label><br>
+                            <input type="text" name="productdescription" id="productdescription" class="form-control"
+                                formControlName="productdescription">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="productimage">Product Image</label><br>
+                            <input type="file" name="productimage" (change)="onImagePicked($event)" id="productimage"
+                                class="form-control" formControlName="productimage">
+                            <div *ngIf="(productForm.controls['productimage']?.touched &&  productForm.controls['productimage']?.invalid) || (submitted  && !productForm.controls['productimage'].value)"
+                                class=" input-error">
+                                Product Image is required.
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="form-group text-center">
+                            <button type="button" name="submit" class="btn btn-dark btn-md mx-auto"
+                                (click)="product()">Submit</button>
+                            &nbsp;
+                            <button type="reset" name="reset" class="btn btn-dark btn-md mx-auto">Reset</button>
+                            &nbsp;
+                            <button class=" btn btn-dark btn-md mx-auto" (click)="cancel()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

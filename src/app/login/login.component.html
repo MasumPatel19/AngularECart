@@ -1,0 +1,90 @@
+<div class="bg img-fluid">
+    <!-- <h3 class="text-center text-white pt-5">Login form</h3> -->
+    <div class="container bgset">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <form id="login-form" class="form" action="" method="post" [formGroup]="loginForm"
+                        (ngSubmit)="onSubmit()">
+                        <h3 class="text-center">Login</h3>
+                        <div class="form-group">
+                            <label for="username">Username:</label><br>
+                            <input (blur)="test($event)" type="text" name="username" id="username" class="form-control"
+                                formControlName="uname" ngModel>
+                            <span class="text-danger" *ngIf="submitted">
+                                <ng-container *ngIf="loginForm.controls.uname.invalid">Username is
+                                    required</ng-container>
+                            </span>
+                            <span *ngIf="loginForm.controls.uname.touched && loginForm.controls.uname.invalid"
+                                class="text-danger">
+                                <ng-container *ngIf="(loginForm.controls.uname.errors?.minlength)">Min
+                                    length is 3</ng-container>
+                                <ng-container *ngIf="loginForm.controls.uname.errors?.maxlength">Max
+                                    length is 50</ng-container>
+                                <ng-container *ngIf="loginForm.controls.uname.errors?.whitespace">Please
+                                    enter valid name.</ng-container>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label><br>
+                            <div class="abc">
+                                <input type="password" name="password" id="password" class="form-control"
+                                    formControlName="password" #pwd ngModel>
+                                <span (click)="pwd.type=pwd.type=='password'?'text':'password'"
+                                    class="bi bi-eye-fill toggle-password"
+                                    [ngClass]="(pwd.type=='password')?' bi bi-eye-fill':' bi bi-eye-slash-fill'"></span>
+                            </div>
+                            <!-- <div *ngIf="submitted && loginForm.controls.password.errors" class="text-danger">
+                                <div *ngIf="loginForm.controls.password.errors.required">Password is required.</div>
+                                <div *ngIf="loginForm.controls.password.errors.pattern">
+                                    <h3>Password must contain the following:</h3>
+                                    <ul>
+                                        <li>There must be 1 digit</li>
+                                        <li>There must be 1 lowercase ASCII letter</li>
+                                        <li>There must be 1 uppercase ASCII letter</li>
+                                        <li>Password length must be 8 characters</li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                            <span *ngIf="submitted" class="text-danger">
+                                <ng-container *ngIf="loginForm.controls.password.errors.required">Password is
+                                    required</ng-container>
+                            </span>
+                            <span *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid"
+                                class="text-danger">
+                                <ng-container *ngIf="loginForm.controls.password.errors?.pattern">Password is incorrect
+                                    <br>
+                                    <span>[ Password must contain 1 digit ,1 uppercase letter,1 lowercase letter and
+                                        length must be 8 character]</span>
+                                </ng-container>
+                            </span>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="remember-me"><span>Remember me</span>&nbsp;<span><input id="remember-me"
+                                        name="remember-me" type="checkbox"></span></label><br>
+                            <button type="submit" name="submit" class="btn btn-dark btn-md d-grid mx-auto"
+                                (click)="login()">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ---- -->
+<!-- 
+<input type="password" class="form-control mb-2" id="inputPassword" formControlName="password"
+    placeholder="Enter Password">
+<div *ngIf="submitted && formControl.password.errors" class="text-danger">
+    <div *ngIf="formControl.password.errors.required">Password is required.</div>
+    <div *ngIf="formControl.password.errors.pattern">
+        <h3>Password must contain the following:</h3>
+        <ul>
+            <li>Password should be alphanumeric</li>
+            <li>A letter of the password should be capital</li>
+            <li>Password must contain a special character (@, $, !, &, etc)</li>
+            <li>Password length must be greater than 7 characters</li>
+        </ul>
+    </div>
+</div> -->

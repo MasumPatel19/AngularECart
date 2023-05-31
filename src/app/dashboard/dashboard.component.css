@@ -1,0 +1,32 @@
+nav,
+nav i {
+    font-size: 20px;
+    color: white;
+}
+
+cbox {
+    width: auto;
+    height: 100%;
+    padding: 2%;
+}
+
+.card {
+    height: 100%;
+    /* opacity: 0.5; */
+    transition: 0.3s ease-in-out;
+}
+
+/* .card {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
+} */
+.card:hover {
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
+mat-form-field {
+    margin-right: 12px;
+}
